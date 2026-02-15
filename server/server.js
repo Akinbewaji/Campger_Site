@@ -20,13 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 // MongoDB Connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log(`[v0] MongoDB connected: ${conn.connection.host}`);
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    console.log('MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`[v0] MongoDB connection error: ${error.message}`);
+    console.error(`MongoDB connection error: ${error.message}`);
     process.exit(1);
   }
 };
